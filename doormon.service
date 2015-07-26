@@ -1,0 +1,14 @@
+[Unit]
+Description=Door chatter IRC bot
+
+[Service]
+Type=simple
+User=doormon
+Group=doormon
+ExecStart=/srv/doormon/python doormon.py
+WorkingDirectory=/srv/doormon
+Restart=always
+RestartSec=60
+
+[Install]
+WantedBy=multi-user.target
