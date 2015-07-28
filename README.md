@@ -18,7 +18,11 @@ You can take this opportunity to configure nick and channel settings in doormon.
 We can use pip to satisfy the requirements. In the repo directory:
 
     cd /srv/doormon
-    pip install -r requirements.txt
+    apt-get install python3-venv
+    sudo -u doormon python3 -m venv venv
+    venv/bin/pip install irc
+    gpasswd -a doormon audio
+    # pip install -r requirements.txt
 
 Copy our service file:
 
