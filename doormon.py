@@ -61,7 +61,8 @@ class DoorBot(irc.bot.SingleServerIRCBot):
             if len(submitted_args) > 0:
                 self.door.say(submitted_args[0])
         elif cmd == "play":
-            pass
+            if len(submitted_args) > 0:
+                self.door.play(submitted_args[0])
         elif cmd == "read":
             pass
         elif cmd == "license":
@@ -81,6 +82,11 @@ class Door(object):
         )
         process.stdin.write(bytes(thing_to_say, "ascii"))
         process.stdin.close()
+
+    def play(self, thing_to_play):
+        process = subprocess.call(
+                ["mpv", thing_to_play],
+                )
 
 def main():
     config = {
